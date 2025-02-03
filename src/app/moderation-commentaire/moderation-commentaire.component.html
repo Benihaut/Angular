@@ -1,0 +1,15 @@
+<h2>Commentaires en attente</h2>
+<ul>
+  <li *ngFor="let commentaire of commentairesEnAttente">
+    {{ commentaire.contenu }}
+    <button (click)="approuver(commentaire.id)">Approuver</button>
+    <button (click)="rejeter(commentaire.id)">Rejeter</button>
+  </li>
+</ul>
+
+<h2>Commentaires approuvés</h2>
+<ul>
+  <li *ngFor="let commentaire of commentairesApprouves">
+    {{ commentaire.contenu }}
+  </li>
+</ul>

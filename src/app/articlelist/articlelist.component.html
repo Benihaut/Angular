@@ -1,0 +1,19 @@
+<div class="article-list-container">
+  <h2>Liste des articles</h2>
+  <button (click)="createArticle()">Créer un nouvel article</button>
+
+  <ng-container *ngIf="articles$ | async as articles">
+    <div *ngFor="let article of articles" class="article-card">
+      <h3>{{ article.titre }}</h3>
+      <p>{{ article.contenue }}...</p>
+      <div class="article-actions">
+        <button (click)="viewArticle(article.id)">Voir</button>
+        <button (click)="editArticle(article.id)">Modifier</button>
+        <button (click)="deleteArticle(article.id)">Supprimer</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="loading">Chargement des articles...</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

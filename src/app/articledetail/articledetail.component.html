@@ -1,0 +1,33 @@
+<div *ngIf="article">
+  <h2>{{ isEditing ? "Modifier l'article" : "Détails de l'article" }}</h2>
+
+  <div *ngIf="!isEditing">
+    <h3>{{ article.titre }}</h3>
+    <p>{{ article.contenue }}</p>
+    <p><strong>Auteur:</strong> {{ article.auteur }}</p>
+    <button (click)="toggleEdit()">Modifier</button>
+  </div>
+
+  <form
+    *ngIf="isEditing"
+    [formGroup]="articleForm"
+    (ngSubmit)="updateArticle()"
+  >
+    <div>
+      <label for="titre">Titre:</label>
+      <input id="titre" type="text" formControlName="titre" />
+    </div>
+    <div>
+      <label for="contenue">Contenu:</label>
+      <textarea id="contenue" formControlName="contenue"></textarea>
+    </div>
+    <div>
+      <label for="auteur">Auteur:</label>
+      <input id="auteur" type="text" formControlName="auteur" />
+    </div>
+    <button type="submit">Enregistrer les modifications</button>
+    <button type="button" (click)="toggleEdit()">Annuler</button>
+  </form>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

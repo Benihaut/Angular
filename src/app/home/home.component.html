@@ -1,0 +1,19 @@
+<div class="home-container">
+  <h1>Bienvenue, {{ username }} !</h1>
+
+  <div class="articles">
+    <div class="article" *ngFor="let article of articles">
+      <img
+        [ngSrc]="article.imageUrl"
+        [width]="300"
+        [height]="200"
+        alt="{{ article.title }}"
+        priority
+      />
+
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.content }}</p>
+      <button (click)="viewArticle(article.id)">Lire plus</button>
+    </div>
+  </div>
+</div>
